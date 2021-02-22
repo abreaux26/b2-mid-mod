@@ -16,7 +16,7 @@ RSpec.describe 'As a user' do
     it 'I see a list of all mechanic’s names and their years of experience' do
       visit mechanics_path
 
-      within("#mechanics-list") do
+      within(".mechanics-list") do
         expect(page).to have_content(@kara.name)
         expect(page).to have_content(@kara.years_experience)
         expect(page).to have_content(@angel.name)
