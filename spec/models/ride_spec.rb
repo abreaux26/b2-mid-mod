@@ -31,5 +31,12 @@ RSpec.describe Ride do
 
       expect(rides).to eq(expected)
     end
+
+    it 'returns rides in alphabetical order' do
+      rides = Ride.order_by_name
+      expected = [@fire_in_the_hole, @outlaw, @time_traveler]
+
+      expect(rides).to eq(expected)
+    end
   end
 end

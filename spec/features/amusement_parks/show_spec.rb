@@ -14,7 +14,7 @@ RSpec.describe 'As a visitor' do
 
     @thunderation = @angel.rides.create!(name: 'Thunderation', thrill_rating: 4, open: false, amusement_park_id: @sdc.id)
     @wildfire = @angel.rides.create!(name: 'Wildfire', thrill_rating: 7, open: true, amusement_park_id: @sdc.id)
-    @powderkey = @angel.rides.create!(name: 'PowderKeg', thrill_rating: 8, open: true, amusement_park_id: @sdc.id)
+    @powderkeg = @angel.rides.create!(name: 'PowderKeg', thrill_rating: 8, open: true, amusement_park_id: @sdc.id)
   end
 
   describe 'When I visit an amusement parks show page' do
@@ -30,8 +30,34 @@ RSpec.describe 'As a visitor' do
         expect(page).not_to have_content(@six_flags.price)
       end
     end
+
+    it 'I see the names of all the rides that are at that theme park' do
+      visit amusement_park_path(@sdc)
+
+      within("#park-#{@sdc.id}") do
+        expect(page).to have_content(@outlaw.name)
+        expect(page).to have_content(@time_traveler.name)
+        expect(page).to have_content(@fire_in_the_hole.name)
+        expect(page).to have_content(@thunderation.name)
+        expect(page).to have_content(@wildfire.name)
+        expect(page).to have_content(@powderkeg.name)
+      end
+    end
+
+    it 'I see rides listed in alphabetical order' do
+      visit amusement_park_path(@sdc)
+
+      within("#park-#{@sdc.id}") do
+        expect(@fire_in_the_hole.name).to appear_before(@outlaw.name)
+        expect(@outlaw.name).to appear_before(@powderkeg.name)
+        expect(@powderkeg.name).to appear_before(@thunderation.name)
+        expect(@thunderation.name).to appear_before(@time_traveler.name)
+        expect(@time_traveler.name).to appear_before(@wildfire.name)
+      end
+    end
+
+    xit 'I see the average thrill rating of this amusement parks ride' do
+
+    end
   end
 end
-
-# And I see the names of all the rides that are at that theme park listed in alphabetical order
-# And I see the average thrill rating of this amusement park’s ride
