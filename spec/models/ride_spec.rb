@@ -21,5 +21,12 @@ RSpec.describe Ride do
       expect(rides).to eq(expected)
       expect(rides).not_to include(bad)
     end
+
+    it 'returns rides by thrill rating in descending order' do
+      rides = Ride.order_by_thrill_rating
+      expected = [@time_traveler, @outlaw, @fire_in_the_hole]
+      
+      expect(rides).to eq(expected)
+    end
   end
 end
