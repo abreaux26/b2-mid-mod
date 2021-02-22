@@ -11,7 +11,7 @@ RSpec.describe Mechanic do
     @angel = Mechanic.create!(name: 'Angel Breaux', years_experience: 5)
   end
 
-  describe 'class methocds' do
+  describe 'class methods' do
     it 'returns average years of experience' do
       sum = @kara.years_experience + @angel.years_experience
       average_years_experience = sum / Mechanic.count
