@@ -15,3 +15,4 @@
 
 @thunderation = @angel.rides.create!(name: 'Thunderation', thrill_rating: 4, open: false)
 @wildfire = @angel.rides.create!(name: 'Wildfire', thrill_rating: 7, open: true)
+@powderkey = @angel.rides.create!(name: 'Powderkeg', thrill_rating: 8, open: true)
