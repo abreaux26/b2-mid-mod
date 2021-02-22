@@ -11,12 +11,12 @@ RSpec.describe 'As a user' do
 
     @thunderation = @angel.rides.create!(name: 'Thunderation', thrill_rating: 4, open: false)
     @wildfire = @angel.rides.create!(name: 'Wildfire', thrill_rating: 7, open: true)
-
   end
 
   describe 'When I visit a mechanic show page' do
     it 'I see their name, years of experience, and the names of all rides they’re working on' do
-      visit mechanics_path(@kara)
+      visit mechanic_path(@kara)
+      expect(current_path).to eq("/mechanics/#{@kara.id}")
 
       within("#mechanic-#{@kara.id}") do
         expect(page).to have_content(@kara.name)
@@ -36,7 +36,7 @@ RSpec.describe 'As a user' do
     end
 
     it 'I only see rides that are open' do
-      visit mechanics_path(@kara)
+      visit mechanic_path(@kara)
 
       within(".open-rides-list") do
         expect(page).to have_content(@outlaw.name)
@@ -47,7 +47,7 @@ RSpec.describe 'As a user' do
     end
 
     it 'I see rides are listed by thrill rating in descending order (most thrills first)' do
-      visit mechanics_path(@kara)
+      visit mechanic_path(@kara)
 
       within(".ride-list")do
         expect(@time_traveler.name).to appear_before(@outlaw.name)
