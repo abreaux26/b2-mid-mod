@@ -5,12 +5,12 @@
 <section class="ride-list">
   <h3>Rides:</h3>
   <% @mechanic_rides.each do |ride| %>
-    <%= ride.name %>
+    <p><%= ride.name %></p>
   <% end %>
 </section>
 <section class="open-rides-list">
   <h3>Open Rides Only:</h3>
   <% @mechanic_rides.open_rides.each do |ride| %>
-    <%= ride.name %>
+    <p><%= ride.name %></p>
   <% end %>
 </section>
