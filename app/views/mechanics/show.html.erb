@@ -19,8 +19,9 @@
 
 <section class='new-ride-mechanics'>
   <%= form_with url: "/mechanics/#{@mechanic.id}/ride_mechanics", method: :post, local: true do |form|%>
-    <p><%= form.label "Add a ride to workload: " %></p>
-    <p><%= form.text_field :id %></p>
+    <h4>Add a ride to workload:</h4>
+    <p><%= form.label 'Ride ID:' %>
+    <%= form.text_field :id %></p>
     <%= form.submit 'Submit' %>
   <% end %>
 </section>
