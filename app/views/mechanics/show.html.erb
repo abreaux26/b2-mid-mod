@@ -2,15 +2,25 @@
   <h1>Mechanic: <%= @mechanic.name %></h1>
   <h2>Years Experience: <%= @mechanic.years_experience %></h2>
 </section>
+
 <section class="ride-list">
-  <h3>Rides:</h3>
+  <h3>Current rides they’re working on:</h3>
   <% @mechanic_rides.each do |ride| %>
     <p><%= ride.name %></p>
   <% end %>
 </section>
+
 <section class="open-rides-list">
   <h3>Open Rides Only:</h3>
   <% @mechanic_rides.open_rides.each do |ride| %>
     <p><%= ride.name %></p>
+  <% end %>
+</section>
+
+<section class='new-ride-mechanics'>
+  <%= form_with url: "/mechanics/#{@mechanic.id}/ride_mechanics", method: :post, local: true do |form|%>
+    <p><%= form.label "Add a ride to workload: " %></p>
+    <p><%= form.text_field :id %></p>
+    <%= form.submit 'Submit' %>
   <% end %>
 </section>
