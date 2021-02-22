@@ -38,5 +38,12 @@ RSpec.describe Ride do
 
       expect(rides).to eq(expected)
     end
+
+    it 'returns average thrill rating' do
+      sum = @outlaw.thrill_rating + @time_traveler.thrill_rating + @fire_in_the_hole.thrill_rating
+      average_thrill_rating = (sum.to_f / Ride.count).round(2)
+
+      expect(Ride.average_thrill_rating).to eq(average_thrill_rating)
+    end
   end
 end

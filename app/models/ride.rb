@@ -14,4 +14,8 @@ class Ride < ApplicationRecord
   def self.order_by_name
     order(:name)
   end
+
+  def self.average_thrill_rating
+    average(:thrill_rating).to_f.round(2)
+  end
 end
